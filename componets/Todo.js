@@ -9,7 +9,7 @@ const addTodo = async (req, res) => {
         })
     }
     const fileData = req.files.map((file) => ({
-        path: file.path,
+        path: file.path,    
         size: file.size
     }))
     const data = new todo({
@@ -26,6 +26,7 @@ const addTodo = async (req, res) => {
 
 }
 const displayTodo = async(req,res)=>{
+    console.log('sdshdiksdksjdhskjdhskjdhskdhsk');
     const data = await todo.find()
     console.log('data',data);
     return res.json({

@@ -27,7 +27,7 @@ const displayReg = async (req, res) => {
     return res.json({ status: 200, message: 'display all data ', data })
 }
 const loginUser = async (req, res) => {
-
+try {
     const { email, password } = req.body;
     const user = await Registration.findOne({ email: email })
     console.log('user = ', user);
@@ -38,7 +38,19 @@ const loginUser = async (req, res) => {
             const token = jwt.sign({ userId: user._id, userEmail: user.email }, secret, { expiresIn: '5d' })
             return res.json({ status: 200, message: 'login succes', token })
         }
+        else{
+        return res.json({ status: 400, message:'somthin went to wrong' })
+
+        }
     }
+    else{
+        return res.json({ status: 400, message:'not found user' })
+
+    }
+} catch (error) {
+    console.log(error);
+}
+
 }
 const updatedata = async (req, res) => {
     const { email, name, password, Phone } = req.body
