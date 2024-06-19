@@ -34,4 +34,7 @@ const displayTodo = async(req,res)=>{
         data:data
     })
 }
-module.exports = {addTodo ,displayTodo}
+const updateTodo = async(req,res)=>{
+
+}
+module.exports = {addTodo ,displayTodo,updateTodo}
